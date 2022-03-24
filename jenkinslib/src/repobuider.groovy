@@ -1,3 +1,20 @@
+
+import com.cloudbees.plugins.credentials.common.StandardUsernamePasswordCredentials
+import com.cloudbees.plugins.credentials.CredentialsProvider
+import hudson.util.Secret
+import hudson.plugins.git.*
+import hudson.model.BuildAuthorizationToken
+import org.apache.commons.lang.RandomStringUtils
+import hudson.tasks.Mailer
+import com.cloudbees.hudson.plugins.folder.Folder
+import hudson.scm.SCM
+import hudson.model.ListView
+import hudson.views.ListViewColumn
+import hudson.triggers.SCMTrigger
+import hudson.*
+import hudson.security.*
+import java.util.*
+    
 def createNewJenkinsJobWithMultiBranch(String projectsFolder, String projectName, String destProject, String destGit, String githubid) {
     // Get GIT Creds and URL, need to replace everything from /scm/.* and https
     scmCredsID = scm.getUserRemoteConfigs()[0].getCredentialsId()
